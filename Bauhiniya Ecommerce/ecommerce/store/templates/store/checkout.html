@@ -1,0 +1,222 @@
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+    <title>BAUHINIA</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/checkout.css' %}">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"> 
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
+    
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/checkout/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="/docs/4.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="form-validation.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+    <div class="container">
+  <div class="py-5 text-center">
+    <h1 class="mainhead">BAUHINIA</h1>
+    <h2>Secure Product Checkout</h2>
+    <p class="lead">Thank you for shopping with Bauhinia! Please provide your billing and payment details below to complete your order.</p>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4 order-md-2 mb-4">
+      <h4 class="d-flex justify-content-between align-items-center mb-3">
+        <span class="text-muted">Your cart</span>
+        <span class="badge badge-secondary badge-pill">3</span>
+      </h4>
+      <ul class="list-group mb-3">
+        {% for item in items %}  
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <div>
+            <h6 class="my-0">{{item.product.name}}</h6>
+            <small class="text-muted">{{item.quantity}}</small>
+          </div>
+          <span class="text-muted">Rs: {{item.product.price|floatformat:2}}</span>
+        </li>
+        {% endfor %}
+
+        <li class="list-group-item d-flex justify-content-between">
+          <span>Total (LKR)</span>
+          <strong>Rs: 4850.00</strong>
+        </li>
+      </ul>
+
+      <button class="btn btn-primary btn-lg btn-block" type="submit" onclick="myFunction()">
+        <i class="fa fa-lock"></i> Place Order</button>
+        <script>
+          function myFunction() {
+            alert("Your order succesfully placed. You can track your in customer portal. Thank you for shopping with Bauhinia");
+          }
+          </script>
+
+    </div>
+    <div class="col-md-8 order-md-1">
+      <a href="{% url 'cart' %}">
+        <p>Back to Cart</p>
+      </a>
+      <h4 class="mb-3">Billing address</h4>
+      <form class="needs-validation" novalidate>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="firstName">First name</label>
+            <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+            <div class="invalid-feedback">
+              Valid first name is required.
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="mphone">Last name</label>
+            <input type="text" class="form-control" id="mphone" placeholder="" value="" required>
+            <div class="invalid-feedback">
+              Valid number is required.
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="hphone">Home Phone Number</label>
+            <input type="number" class="form-control" id="hphone" placeholder="09X XXX XX XX" value="" required>
+            <div class="invalid-feedback">
+              Valid number is required.
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="lastName">Mobile Phone Number</label>
+            <input type="number" class="form-control" id="lastName" placeholder="07X XXX XX XX" value="" required>
+            <div class="invalid-feedback">
+              Valid last name is required.
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" id="email" placeholder="you@example.com" value="" required>
+          <div class="invalid-feedback">
+            Please enter a valid email address.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="address">Address</label>
+          <input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
+          <div class="invalid-feedback">
+            Please enter your shipping address.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
+          <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
+        </div>
+
+        <div class="row">
+          <div class="col-md-5 mb-3">
+            <label for="country">Province</label>
+            <select class="custom-select d-block w-100" id="country" required>
+              <option value="">Choose...</option>
+              <option>Central Province</option>
+              <option>Eastern Province</option>
+              <option>North Central Province</option>
+              <option>North Province</option>
+              <option>North Western Province</option>
+              <option>Sabaragamuwa Province</option>
+              <option>Southern Province</option>
+              <option>Uva Province</option>
+              <option>Western Province</option>
+            </select>
+            <div class="invalid-feedback">
+              Please select a valid Province.
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="state">City</label>
+            <input type="text" class="form-control" id="city" placeholder="" value="" required>
+            <div class="invalid-feedback">
+              Please provide a valid City.
+            </div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="zip">Zip</label>
+            <input type="number" class="form-control" id="zip" placeholder="" required>
+            <div class="invalid-feedback">
+              Zip code required.
+            </div>
+          </div>
+        </div>
+        <hr class="mb-4">
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" id="terms" name="terms" value="terms" required>
+          <div class="invalid-feedback">
+            Agreement required.
+          </div>
+          <label for="terms">By clicking this, I agree to Bauhinia terms and conditions</label>
+        </div>
+        <hr class="mb-4">
+
+        <h4 class="mb-3">Payment</h4>
+
+        <div class="d-block my-3">
+          <div class="custom-control custom-radio">
+            <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" disabled>
+            <label class="custom-control-label" for="credit">Credit Or Debit card</label>
+          </div>
+
+          <div class="custom-control custom-radio">
+            <input id="cod" name="paymentMethod" type="radio" class="custom-control-input" checked required>
+            <label class="custom-control-label" for="cod">Cash On Delivery</label>
+          </div>
+        </div>
+
+        <hr class="mb-4">
+        
+        <button class="btn btn-primary btn-lg btn-block" type="submit">
+          <i class="fa fa-lock"></i> Place Order</button>
+      </form>
+    </div>
+  </div>
+
+  <footer class="my-5 pt-5 text-muted text-center text-small">
+    <p class="mb-1">Secure Payment &copy; 2018-2022 Bauhinia Sri Lanka</p>
+  </footer>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script>window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')</script><script src="https://getbootstrap.com/docs/4.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
+        <script src="https://getbootstrap.com/docs/4.3/examples/checkout/form-validation.js"></script></body>
+</html>
+{% endblock content %}

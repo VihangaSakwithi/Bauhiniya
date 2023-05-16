@@ -1,0 +1,15 @@
+import http
+import imp
+from urllib import response
+from django.contrib import admin
+from .models import *
+
+# Register your models here.
+
+admin.site.register(Customer)
+admin.site.register(Product)
+admin.site.register(Order)
+admin.site.register(OrderItem)
+admin.site.register(ShippingAddress)
+
+#Username- admin | Password- sakwithi123 | Main- vsakwithi@outlook.com
